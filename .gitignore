@@ -1,0 +1,7 @@
+#Intellij config
+.idea/
+*.iml
+
+# Compiled class file
+target/
+*.class
