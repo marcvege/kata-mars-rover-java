@@ -39,5 +39,12 @@ class RoverTest {
         assertThat(rover.move(commands), is(position));
     }
 
-
+    @DisplayName("Rotate and Move forward")
+    @ParameterizedTest(name = "\"{0}\" should be {1}")
+    @CsvSource({"MR, 0:1:E",
+                "RM, 1:0:E"})
+    void rotate_and_move_forward(String commands, String position) {
+        Rover rover = new Rover();
+        assertThat(rover.move(commands), is(position));
+    }
 }
