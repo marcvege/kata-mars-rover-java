@@ -13,6 +13,9 @@ public class Rover {
                 case 'S':
                     direction = 'W';
                     break;
+                case 'W':
+                    direction = 'N';
+                    break;
 
             }
         }

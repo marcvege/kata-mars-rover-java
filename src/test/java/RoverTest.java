@@ -11,7 +11,8 @@ class RoverTest {
     @ParameterizedTest(name = "\"{0}\" should be {1}")
     @CsvSource({"R, 0:0:E",
                 "RR, 0:0:S",
-                "RRR, 0:0:W"})
+                "RRR, 0:0:W",
+                "RRRR, 0:0:N"})
     void rotate_right(String commands, String position) {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
