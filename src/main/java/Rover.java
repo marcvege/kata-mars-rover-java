@@ -24,7 +24,7 @@ public class Rover {
         }
 
         Position position = grid.getPosition();
-        return position.getX() + ":" + position.getY() + ":" + compass.getDirection();
+        return position.getX() + ":" + position.getY() + ":" + compass.getDirection().getSymbol();
     }
 
 }
