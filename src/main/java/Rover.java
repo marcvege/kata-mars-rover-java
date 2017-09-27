@@ -16,11 +16,11 @@ public class Rover {
                     compass.rotateToLeft();
                     break;
                 case MOVE_FORWARD:
-                    position.move();
+                    position.moveTo(compass.getDirection());
                     break;
             }
         }
-        return  "0:" + position.getY() + ":" + compass.getDirection();
+        return position.getX() + ":" + position.getY() + ":" + compass.getDirection();
     }
 
 }
