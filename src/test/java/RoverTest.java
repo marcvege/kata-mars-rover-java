@@ -32,9 +32,12 @@ class RoverTest {
     @DisplayName("Move forward")
     @ParameterizedTest(name = "\"{0}\" should be {1}")
     @CsvSource({"M, 0:1:N",
-                "MM, 0:2:N"})
+                "MM, 0:2:N",
+                "MMM, 0:3:N"})
     void move_forward(String commands, String position) {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
     }
+
+
 }
