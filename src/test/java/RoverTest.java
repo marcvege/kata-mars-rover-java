@@ -28,4 +28,12 @@ class RoverTest {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
     }
+
+    @DisplayName("Move forward")
+    @ParameterizedTest(name = "\"{0}\" should be {1}")
+    @CsvSource({"M, 0:1:N"})
+    void move_forward(String commands, String position) {
+        Rover rover = new Rover();
+        assertThat(rover.move(commands), is(position));
+    }
 }
