@@ -1,5 +1,3 @@
-import java.awt.*;
-
 public class Rover {
     public static final char ROTATE_TO_RIGHT = 'R';
     public static final char ROTATE_TO_LEFT = 'L';
