@@ -20,7 +20,6 @@ public class Rover {
                     break;
             }
         }
-
         return getRepresentation(grid.getPosition(), compass.getDirection());
     }
 

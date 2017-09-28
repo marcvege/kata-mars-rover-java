@@ -54,4 +54,12 @@ class RoverTest {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
     }
+
+    @DisplayName("Grid with obstacles")
+    @ParameterizedTest(name = "\"{0}\" should be {1}")
+    @CsvSource({"MRM, O:0:1:E"})
+    void report_when_find_an_obstacle(String commands, String position) {
+        Rover rover = new Rover();
+        assertThat(rover.move(commands), is(position));
+    }
 }
