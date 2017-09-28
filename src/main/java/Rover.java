@@ -21,8 +21,11 @@ public class Rover {
             }
         }
 
-        Position position = grid.getPosition();
-        return position.getX() + ":" + position.getY() + ":" + compass.getDirection().getSymbol();
+        return getRepresentation(grid.getPosition(), compass.getDirection());
+    }
+
+    private String getRepresentation(Position position, CardinalPoint direction) {
+        return String.format("%s:%s:%s", position.getX(), position.getY(), direction.getSymbol());
     }
 
 }
