@@ -15,19 +15,19 @@ public class Position {
         return x;
     }
 
-    public void incrementYMod(int mod) {
-        y = Math.modOf(++y, mod);
+    public Position incrementYMod(int mod) {
+        return new Position (x, Math.modOf(y+1, mod));
     }
 
-    public void incrementXMod(int mod) {
-        x = Math.modOf(++x, mod);
+    public Position incrementXMod(int mod) {
+        return new Position (Math.modOf(x + 1, mod), y);
     }
 
-    public void decrementYMod(int mod) {
-        y = Math.modOf(--y, mod);
+    public Position decrementYMod(int mod) {
+        return new Position (x, Math.modOf(y-1, mod));
     }
 
-    public void decrementXMod(int mod) {
-        x = Math.modOf(--x, mod);
+    public Position decrementXMod(int mod) {
+        return new Position( Math.modOf(x-1, mod), y);
     }
 }

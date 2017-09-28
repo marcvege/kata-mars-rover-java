@@ -13,17 +13,13 @@ public class Grid {
         Position position = situation.getPosition();
         switch(situation.getDirection()){
             case NORTH:
-                position.incrementYMod(MAX_Y);
-                break;
+                return position.incrementYMod(MAX_Y);
             case EAST:
-                position.incrementXMod(MAX_X);
-                break;
+                return position.incrementXMod(MAX_X);
             case SOUTH:
-                position.decrementYMod(MAX_Y);
-                break;
+                return position.decrementYMod(MAX_Y);
             case WEST:
-                position.decrementXMod(MAX_X);
-                break;
+                return position.decrementXMod(MAX_X);
         }
         return position;
     }
