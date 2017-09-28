@@ -3,27 +3,29 @@ public class Rover {
     public static final char ROTATE_TO_LEFT = 'L';
     public static final char MOVE_FORWARD = 'M';
 
-    private Compass compass = new Compass();
+    private Compass compass ;
+    private final Situation situation;
+
+    public Rover() {
+        this.compass = new Compass();
+        situation = new Situation(new Position(0,0), CardinalPoint.NORTH);
+    }
 
     public String move(String commands, Grid grid) {
         for (char command : commands.toCharArray()) {
             switch (command) {
                 case ROTATE_TO_RIGHT:
-                    compass.rotateToRight();
+                    situation.setDirection(compass.rotateToRight());
                     break;
                 case ROTATE_TO_LEFT:
-                    compass.rotateToLeft();
+                    situation.setDirection(compass.rotateToLeft());
                     break;
                 case MOVE_FORWARD:
-                    grid.moveTo(compass.getDirection());
+                    situation.setPosition(grid.moveTo(situation));
                     break;
             }
         }
-        return getRepresentation(grid.getPosition(), compass.getDirection());
+        //return Either.right(grid.getPosition());
+        return situation.getRepresentation();
     }
-
-    private String getRepresentation(Position position, CardinalPoint direction) {
-        return String.format("%s:%s:%s", position.getX(), position.getY(), direction.getSymbol());
-    }
-
 }

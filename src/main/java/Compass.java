@@ -14,12 +14,14 @@ public class Compass {
         return directions[indexOfRotations()];
     }
 
-    void rotateToRight() {
+    CardinalPoint rotateToRight() {
         numberRotationsToRight++;
+        return directions[indexOfRotations()];
     }
 
-    void rotateToLeft() {
+    CardinalPoint rotateToLeft() {
         numberRotationsToRight--;
+        return directions[indexOfRotations()];
     }
 
     private int indexOfRotations() {

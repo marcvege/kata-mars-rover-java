@@ -2,6 +2,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -15,7 +17,7 @@ class RoverTest {
                 "RRRR, 0:0:N"})
     void rotate_right(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands, new Grid()), is(position));
+        assertThat(rover.move(commands, new Grid(List.of())), is(position));
     }
 
     @DisplayName("Rotate to left")
@@ -26,7 +28,7 @@ class RoverTest {
                 "LLLL, 0:0:N"})
     void rotate_left(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands, new Grid()), is(position));
+        assertThat(rover.move(commands, new Grid(List.of())), is(position));
     }
 
     @DisplayName("Move forward")
@@ -38,7 +40,7 @@ class RoverTest {
                 "MMMMMMMMMM, 0:0:N"})
     void move_forward(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands, new Grid()), is(position));
+        assertThat(rover.move(commands, new Grid(List.of())), is(position));
     }
 
     @DisplayName("Rotate and Move forward")
@@ -52,7 +54,7 @@ class RoverTest {
                 "RRRMLLML, 0:0:N"})
     void rotate_and_move_forward(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands,  new Grid()), is(position));
+        assertThat(rover.move(commands,  new Grid(List.of())), is(position));
     }
 
     @DisplayName("Grid with obstacles")
@@ -60,6 +62,7 @@ class RoverTest {
     @CsvSource({"MRM, O:0:1:E"})
     void report_when_find_an_obstacle(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands, new Grid()), is(position));
+        List<Position> obstacles = List.of(new Position(1,1));
+        assertThat(rover.move(commands, new Grid(obstacles)), is(position));
     }
 }
