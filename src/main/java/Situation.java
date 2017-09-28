@@ -26,4 +26,9 @@ public class Situation {
     public void setPosition(Position position) {
         this.position = position;
     }
+
+    public String getRepresentationWithObstacle() {
+        return "O:" + getRepresentation();
+
+    }
 }

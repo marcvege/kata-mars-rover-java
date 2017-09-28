@@ -1,26 +1,38 @@
+import io.vavr.control.Either;
+
 import java.util.List;
+import java.util.Optional;
 
 public class Grid {
     private static final int MAX_X = 10;
     private static final int MAX_Y = 10;
+    public static final Optional<Position> OBSTACLE = Optional.empty();
     private List<Position> obstacles;
 
     public Grid(List<Position> obstacles) {
         this.obstacles = obstacles;
     }
 
-    public Position moveTo(Situation situation) {
+    public Optional<Position> moveAheadFrom(Situation situation) {
         Position position = situation.getPosition();
+        Position newPosition = position;
         switch(situation.getDirection()){
             case NORTH:
-                return position.incrementYMod(MAX_Y);
+                newPosition = position.incrementYMod(MAX_Y);
+                break;
             case EAST:
-                return position.incrementXMod(MAX_X);
+                newPosition = position.incrementXMod(MAX_X);
+                break;
             case SOUTH:
-                return position.decrementYMod(MAX_Y);
+                newPosition = position.decrementYMod(MAX_Y);
+                break;
             case WEST:
-                return position.decrementXMod(MAX_X);
+                newPosition = position.decrementXMod(MAX_X);
+                break;
         }
-        return position;
+        if(obstacles.contains(newPosition)){
+            return OBSTACLE;
+        }
+        return Optional.of(newPosition);
     }
 }

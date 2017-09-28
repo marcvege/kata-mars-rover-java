@@ -30,4 +30,22 @@ public class Position {
     public Position decrementXMod(int mod) {
         return new Position( Math.modOf(x-1, mod), y);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Position position = (Position) o;
+
+        if (y != position.y) return false;
+        return x == position.x;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = y;
+        result = 31 * result + x;
+        return result;
+    }
 }

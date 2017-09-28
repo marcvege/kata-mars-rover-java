@@ -1,3 +1,5 @@
+import java.util.Optional;
+
 public class Rover {
     public static final char ROTATE_TO_RIGHT = 'R';
     public static final char ROTATE_TO_LEFT = 'L';
@@ -21,7 +23,12 @@ public class Rover {
                     situation.setDirection(compass.rotateToLeft());
                     break;
                 case MOVE_FORWARD:
-                    situation.setPosition(grid.moveTo(situation));
+                    Optional<Position> position =grid.moveAheadFrom(situation);
+                    if(position.isPresent()) {
+                        situation.setPosition(position.get());
+                    }else{
+                        return situation.getRepresentationWithObstacle();
+                    }
                     break;
             }
         }
