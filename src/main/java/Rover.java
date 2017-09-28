@@ -4,9 +4,8 @@ public class Rover {
     public static final char MOVE_FORWARD = 'M';
 
     private Compass compass = new Compass();
-    private Grid grid = new Grid();
 
-    public String move(String commands) {
+    public String move(String commands, Grid grid) {
         for (char command : commands.toCharArray()) {
             switch (command) {
                 case ROTATE_TO_RIGHT:

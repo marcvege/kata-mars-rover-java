@@ -15,7 +15,7 @@ class RoverTest {
                 "RRRR, 0:0:N"})
     void rotate_right(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands), is(position));
+        assertThat(rover.move(commands, new Grid()), is(position));
     }
 
     @DisplayName("Rotate to left")
@@ -26,7 +26,7 @@ class RoverTest {
                 "LLLL, 0:0:N"})
     void rotate_left(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands), is(position));
+        assertThat(rover.move(commands, new Grid()), is(position));
     }
 
     @DisplayName("Move forward")
@@ -38,7 +38,7 @@ class RoverTest {
                 "MMMMMMMMMM, 0:0:N"})
     void move_forward(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands), is(position));
+        assertThat(rover.move(commands, new Grid()), is(position));
     }
 
     @DisplayName("Rotate and Move forward")
@@ -52,7 +52,7 @@ class RoverTest {
                 "RRRMLLML, 0:0:N"})
     void rotate_and_move_forward(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands), is(position));
+        assertThat(rover.move(commands,  new Grid()), is(position));
     }
 
     @DisplayName("Grid with obstacles")
@@ -60,6 +60,6 @@ class RoverTest {
     @CsvSource({"MRM, O:0:1:E"})
     void report_when_find_an_obstacle(String commands, String position) {
         Rover rover = new Rover();
-        assertThat(rover.move(commands), is(position));
+        assertThat(rover.move(commands, new Grid()), is(position));
     }
 }
