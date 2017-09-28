@@ -33,7 +33,9 @@ class RoverTest {
     @ParameterizedTest(name = "\"{0}\" should be {1}")
     @CsvSource({"M, 0:1:N",
                 "MM, 0:2:N",
-                "MMM, 0:3:N"})
+                "MMM, 0:3:N",
+                "MMMMMMMMM, 0:9:N",
+                "MMMMMMMMMM, 0:0:N"})
     void move_forward(String commands, String position) {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
@@ -45,7 +47,9 @@ class RoverTest {
                 "RM, 1:0:E",
                 "RMM, 2:0:E",
                 "RRM, 0:9:S",
-                "RRRM, 9:0:W"})
+                "RRMLLM, 0:0:N",
+                "RRRM, 9:0:W",
+                "RRRMLLML, 0:0:N"})
     void rotate_and_move_forward(String commands, String position) {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
