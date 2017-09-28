@@ -44,7 +44,8 @@ class RoverTest {
     @CsvSource({"MR, 0:1:E",
                 "RM, 1:0:E",
                 "RMM, 2:0:E",
-                "RRM, 0:9:S" })
+                "RRM, 0:9:S",
+                "RRRM, 9:0:W"})
     void rotate_and_move_forward(String commands, String position) {
         Rover rover = new Rover();
         assertThat(rover.move(commands), is(position));
