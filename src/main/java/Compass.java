@@ -10,10 +10,6 @@ public class Compass {
         this.numberRotationsToRight = 0;
     }
 
-    public CardinalPoint getDirection() {
-        return directions[indexOfRotations()];
-    }
-
     CardinalPoint rotateToRight() {
         numberRotationsToRight++;
         return directions[indexOfRotations()];

@@ -1,10 +1,22 @@
 public class Position {
     private int y;
     private int x;
+    private boolean blocked;
 
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+        this.blocked = false;
+    }
+
+    private Position(int x, int y, boolean blocked) {
+        this.x = x;
+        this.y = y;
+        this.blocked = blocked;
+    }
+
+    public static Position createBlockedPosition(Position position) {
+        return new Position(position.x, position.y, true);
     }
 
     public int getY() {
@@ -13,6 +25,10 @@ public class Position {
 
     public int getX() {
         return x;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
     }
 
     public Position incrementYMod(int mod) {

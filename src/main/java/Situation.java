@@ -20,15 +20,15 @@ public class Situation {
     }
 
     public String getRepresentation() {
-        return String.format("%s:%s:%s", position.getX(), position.getY(), direction.getSymbol());
+        String representation = String.format("%s:%s:%s", position.getX(), position.getY(), direction.getSymbol());
+        return (isBlocked())?"O:" + representation: representation;
     }
 
     public void setPosition(Position position) {
         this.position = position;
     }
 
-    public String getRepresentationWithObstacle() {
-        return "O:" + getRepresentation();
-
+    public boolean isBlocked() {
+        return position.isBlocked();
     }
 }
