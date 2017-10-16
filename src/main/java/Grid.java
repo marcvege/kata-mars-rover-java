@@ -17,6 +17,29 @@ public class Grid {
         return newPosition;
     }
 
+    public Position moveBackFrom(Situation situation) {
+        Position newPosition = searchNewPositionBack(situation);
+        if (obstacles.contains(newPosition)) {
+            return Position.createBlockedPosition(situation.getPosition());
+        }
+        return newPosition;
+    }
+
+    private Position searchNewPositionBack(Situation situation) {
+        Position position = situation.getPosition();
+        switch (situation.getDirection()) {
+            case NORTH:
+                return position.decrementYMod(MAX_Y);
+            case EAST:
+                return position.decrementXMod(MAX_X);
+            case SOUTH:
+                return position.incrementYMod(MAX_Y);
+            case WEST:
+                return position.incrementXMod(MAX_X);
+        }
+        return position;
+    }
+
     private Position searchNewPosition(Situation situation) {
         Position position = situation.getPosition();
         switch (situation.getDirection()) {
@@ -31,4 +54,5 @@ public class Grid {
         }
         return position;
     }
+
 }

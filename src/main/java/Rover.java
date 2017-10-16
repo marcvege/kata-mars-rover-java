@@ -2,6 +2,7 @@ public class Rover {
     public static final char ROTATE_TO_RIGHT = 'R';
     public static final char ROTATE_TO_LEFT = 'L';
     public static final char MOVE_FORWARD = 'M';
+    public static final char MOVE_BACK = 'B';
 
     private Compass compass;
     private final Situation situation;
@@ -23,6 +24,8 @@ public class Rover {
                 case MOVE_FORWARD:
                     situation.setPosition(grid.moveAheadFrom(situation));
                     break;
+                case MOVE_BACK:
+                    situation.setPosition(grid.moveBackFrom(situation));
             }
             if(situation.isBlocked()) return situation.getRepresentation();
         }

@@ -72,4 +72,32 @@ class RoverTest {
         List<Position> obstacles = List.of(new Position(1,1));
         assertThat(rover.move(commands, new Grid(obstacles)), is(position));
     }
+
+    @DisplayName("Move back")
+    @ParameterizedTest(name = "\"{0}\" should be {1}")
+    @CsvSource({"MB, 0:0:N",
+                "MMBB, 0:0:N",
+                "B, 0:9:N",
+                "BB, 0:8:N",
+                "BBBBBB, 0:4:N",
+                "BBBBBBBBBB, 0:0:N",
+                "BBBBBBBBB, 0:1:N"})
+    void move_back(String commands, String position) {
+        Rover rover = new Rover();
+        assertThat(rover.move(commands, new Grid(List.of())), is(position));
+    }
+
+    @DisplayName("Rotate and Move forward and back")
+    @ParameterizedTest(name = "\"{0}\" should be {1}")
+    @CsvSource({"MR, 0:1:E",
+            "RMB, 0:0:E",
+            "RMMB, 1:0:E",
+            "RRMBB, 0:1:S",
+            "RRBLLB, 0:0:N",
+            "RRRB, 1:0:W",
+            "RRRBLLBL, 0:0:N"})
+    void rotate_and_move_forward_and_back(String commands, String position) {
+        Rover rover = new Rover();
+        assertThat(rover.move(commands,  new Grid(List.of())), is(position));
+    }
 }
