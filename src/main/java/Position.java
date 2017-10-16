@@ -31,20 +31,9 @@ public class Position {
         return blocked;
     }
 
-    public Position incrementYMod(int mod) {
-        return new Position (x, Math.modOf(y+1, mod));
-    }
-
-    public Position incrementXMod(int mod) {
-        return new Position (Math.modOf(x + 1, mod), y);
-    }
-
-    public Position decrementYMod(int mod) {
-        return new Position (x, Math.modOf(y-1, mod));
-    }
-
-    public Position decrementXMod(int mod) {
-        return new Position( Math.modOf(x-1, mod), y);
+    public Position incrementPositionMod(Position increment, Position maxPosition) {
+        return new Position(Math.modOf(x + increment.x, maxPosition.x),
+                Math.modOf(y + increment.y, maxPosition.y));
     }
 
     @Override
