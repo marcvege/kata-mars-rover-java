@@ -10,7 +10,7 @@ public class Grid {
     }
 
     public Position moveAheadFrom(Situation situation) {
-        Position newPosition = searchNewPosition(situation);
+        Position newPosition = searchNewPositionForward(situation);
         if (obstacles.contains(newPosition)) {
             return Position.createBlockedPosition(situation.getPosition());
         }
@@ -40,7 +40,7 @@ public class Grid {
         return position;
     }
 
-    private Position searchNewPosition(Situation situation) {
+    private Position searchNewPositionForward(Situation situation) {
         Position position = situation.getPosition();
         switch (situation.getDirection()) {
             case NORTH:
@@ -54,5 +54,4 @@ public class Grid {
         }
         return position;
     }
-
 }
