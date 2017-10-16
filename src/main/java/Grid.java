@@ -11,28 +11,18 @@ public class Grid {
     }
 
     public Position moveAheadFrom(Situation situation) {
-        Position newPosition = searchNewPositionForward(situation);
-        if (obstacles.contains(newPosition)) {
-            return Position.createBlockedPosition(situation.getPosition());
-        }
-        return newPosition;
+        return addIncrementToPosition(situation.getPosition(), situation.getDirection().getIncrementForward());
     }
 
     public Position moveBackFrom(Situation situation) {
-        Position newPosition = searchNewPositionBack(situation);
+        return addIncrementToPosition(situation.getPosition(), situation.getDirection().getIncrementBack());
+    }
+
+    private Position addIncrementToPosition(Position position, Position increment) {
+        Position newPosition = position.incrementPositionMod(increment, MAX_POSITION);
         if (obstacles.contains(newPosition)) {
-            return Position.createBlockedPosition(situation.getPosition());
+            return Position.createBlockedPosition(position);
         }
         return newPosition;
-    }
-
-    private Position searchNewPositionBack(Situation situation) {
-        Position position = situation.getPosition();
-        return position.incrementPositionMod(situation.getDirection().getIncrementBack(), MAX_POSITION);
-    }
-
-    private Position searchNewPositionForward(Situation situation) {
-        Position position = situation.getPosition();
-        return position.incrementPositionMod(situation.getDirection().getIncrementForward(), MAX_POSITION);
     }
 }
